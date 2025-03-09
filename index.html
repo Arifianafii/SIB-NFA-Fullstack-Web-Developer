@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NF Academy Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* Header styles */
+        .header-carousel .carousel-item img {
+            height: 250px;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+        
+        /* Navigation styles */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand img {
+            transition: transform 0.3s;
+        }
+        
+        .navbar-brand:hover img {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+            margin: 0 5px;
+            font-weight: 500;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #0d6efd;
+            left: 0;
+            bottom: -3px;
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        /* Content area styles */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .content-area {
+            flex: 1;
+        }
+        
+        /* Sidebar styles */
+        .sidebar {
+            min-height: 500px;
+            background-color: white;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        /* Main content styles */
+        .main-content {
+            min-height: 500px;
+            padding: 20px;
+        }
+        
+        /* Card styles */
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .card-header {
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Links styles */
+        .external-links .list-group-item {
+            border-left: none;
+            border-right: none;
+            transition: background-color 0.3s;
+        }
+        
+        .external-links .list-group-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .external-links a {
+            text-decoration: none;
+            color: #0d6efd;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .external-links a:hover {
+            transform: translateX(5px);
+        }
+        
+        /* Footer styles */
+        footer {
+            background: linear-gradient(135deg, #172a74, #21a9af);
+            color: white;
+            padding: 30px 0 20px;
+            margin-top: auto;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        
+        /* Loader styles */
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #0d6efd;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+            margin: 100px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+       
+        #contentFrame {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            border: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header class="container-fluid p-0">
+        <div id="headerCarousel" class="carousel slide header-carousel" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#headerCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#headerCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#headerCarousel" data-bs-slide-to="2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97" class="d-block w-100" alt="Web Development">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Welcome to NF Academy</h2>
+                        <p>Expand your knowledge with cutting-edge web development technologies</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1" class="d-block w-100" alt="Technology">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Learn Modern Technologies</h2>
+                        <p>Master the latest tools and frameworks in the tech industry</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" class="d-block w-100" alt="Coding">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Develop Real Projects</h2>
+                        <p>Build your portfolio with hands-on experience</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#headerCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#headerCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo.png" alt="NF Academy Logo" height="40" class="me-2">
+                <span class="fw-bold text-dark">NF Academy</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="home.html" data-page="home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="study.html" data-page="study">My Study</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html" data-page="gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="datatables.html" data-page="datatables">Data Tables</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary px-4" href="login.html" data-page="login">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid main-container">
+        <div class="row content-area">
+            <div class="col-md-3 sidebar p-0">
+                <div class="p-3">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white py-3">
+                            <i class="fas fa-link me-2"></i> External Links
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush external-links">
+                                <li class="list-group-item py-3"><a href="https://nfacademy.id" target="_blank"><i class="fas fa-external-link-alt me-2"></i> NF Academy</a></li>
+                                <li class="list-group-item py-3"><a href="https://nurulfikri.ac.id" target="_blank"><i class="fas fa-external-link-alt me-2"></i> Nurul Fikri</a></li>
+                                <li class="list-group-item py-3"><a href="https://getbootstrap.com" target="_blank"><i class="fas fa-external-link-alt me-2"></i> Bootstrap</a></li>
+                                <li class="list-group-item py-3"><a href="https://developer.mozilla.org" target="_blank"><i class="fas fa-external-link-alt me-2"></i> MDN Web Docs</a></li>
+                                <li class="list-group-item py-3"><a href="https://github.com" target="_blank"><i class="fas fa-external-link-alt me-2"></i> GitHub</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header bg-primary text-white py-3">
+                            <i class="fas fa-bullhorn me-2"></i> Experience Project
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info mb-3">
+                                <strong>Final project FreshTani</strong>
+                            </div>
+                            <div class="alert alert-success mb-3">
+                                <strong>Project PlaNet</strong>
+                            </div>
+                            <div class="alert alert-info mb-3">
+                                <strong>Project RecyShop</strong>
+                            </div>
+                            <div class="alert alert-success">
+                                <strong>Redesign Segari App</strong>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+      
+            <div class="col-md-9 main-content">
+               
+                <div class="loader" id="contentLoader" style="display: none;"></div>
+                
+                <iframe id="contentFrame" name="contentFrame" src="home.html" title="Content"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="mb-3">About Me</h5>
+                    <p>This website was created by Arifiana as a responsive web design project using the Bootstrap framework.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="home.html" class="text-white text-decoration-none" data-page="home">Home</a></li>
+                        <li class="mb-2"><a href="study.html" class="text-white text-decoration-none" data-page="study">My Study</a></li>
+                        <li class="mb-2"><a href="gallery.html" class="text-white text-decoration-none" data-page="gallery">Gallery</a></li>
+                        <li class="mb-2"><a href="datatables.html" class="text-white text-decoration-none" data-page="datatables">Data Tables</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Connect With Me</h5>
+                    <p>Feel free to reach out through social media or email.</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/fii.fiana30?igsh=MWJwaTJyeHl1dDJpbA==" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/arifiana-fii-b16245252/" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Arifianafii" class="text-white"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row copyright">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 Arifiana | STT Terpadu Nurul Fikri</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('[data-page]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelectorAll('.nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    
+                    if (this.classList.contains('nav-link')) {
+                        this.classList.add('active');
+                    }
+   
+                    const pageUrl = this.getAttribute('href');
+                    const pageName = this.getAttribute('data-page');
+
+                    document.title = 'NF Academy - ' + pageName.charAt(0).toUpperCase() + pageName.slice(1);
+         
+                    document.getElementById('contentLoader').style.display = 'block';
+                    document.getElementById('contentFrame').style.display = 'none';
+         
+                    document.getElementById('contentFrame').src = pageUrl;
+                   
+                    history.pushState({ page: pageName }, '', '#' + pageName);
+                    
+                    document.getElementById('contentFrame').onload = function() {
+                        document.getElementById('contentLoader').style.display = 'none';
+                        document.getElementById('contentFrame').style.display = 'block';
+                    };
+                });
+            });
+
+            window.addEventListener('popstate', function(e) {
+                if (e.state && e.state.page) {
+                    const page = e.state.page;
+                    document.querySelector(`[data-page="${page}"]`).click();
+                }
+            });
+            
+            const initialPage = window.location.hash.substring(1) || 'home';
+            document.querySelector(`[data-page="${initialPage}"]`).click();
+        });
+    </script>
+</body>
+</html>
