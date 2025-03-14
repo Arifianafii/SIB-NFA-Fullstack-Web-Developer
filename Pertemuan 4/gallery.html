@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--background);
+            color: var(--primary-color);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .marquee-container::before,
+        .marquee-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .marquee-container::before {
+            left: 0;
+            background: linear-gradient(90deg, var(--card-bg), transparent);
+        }
+
+        .marquee-container::after {
+            right: 0;
+            background: linear-gradient(270deg, var(--card-bg), transparent);
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 25px;
+            animation: marquee 20s linear infinite;
+            padding: 10px 0;
+        }
+
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-content img {
+            height: 160px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .marquee-content img:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 20px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--card-bg);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item a {
+            display: block;
+            text-decoration: none;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Lightbox Effect */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+        }
+
+        .lightbox:target {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 15px;
+            }
+            
+            .marquee-content img {
+                height: 120px;
+            }
+            
+            .gallery-item img {
+                height: 220px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gallery</h1>
+        </header>
+        
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <img src="img/bunga1.jpg" alt="Bunga 1">
+                <img src="img/bunga2.jpg" alt="Bunga 2">
+                <img src="img/bunga3.jpg" alt="Bunga 3">
+                <img src="img/bunga4.jpg" alt="Bunga 4">
+                <img src="img/bunga5.jpg" alt="Bunga 5">
+                <img src="img/bunga6.jpg" alt="Bunga 6">
+                <img src="img/bunga2.jpg" alt="Bunga 1">
+                <img src="img/bunga1.jpg" alt="Bunga 2">
+            </div>
+        </div>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <a href="#lightbox-1">
+                    <img src="img/bunga1.jpg" alt="Bunga 1">
+                    <div class="gallery-caption">
+                        <h3>Bunga Indah</h3>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="#lightbox-2">
+                    <img src="img/bunga2.jpg" alt="Bunga 2">
+                    <div class="gallery-caption">
+                        <h3>Bunga Cantik</h3>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="#lightbox-3">
+                    <img src="img/bunga3.jpg" alt="Bunga 3">
+                    <div class="gallery-caption">
+                        <h3>Bunga Matahari</h3>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="#lightbox-4">
+                    <img src="img/bunga4.jpg" alt="Bunga 4">
+                    <div class="gallery-caption">
+                        <h3>Bunga Anggrek</h3>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="#lightbox-5">
+                    <img src="img/bunga5.jpg" alt="Bunga 5">
+                    <div class="gallery-caption">
+                        <h3>Bunga Melati</h3>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="#lightbox-6">
+                    <img src="img/bunga6.jpg" alt="Bunga 6">
+                    <div class="gallery-caption">
+                        <h3>Bunga Sepatu</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+      
+        <div id="lightbox-1" class="lightbox">
+            <a href="#" class="close">&times;</a>
+            <img src="/api/placeholder/400/320" alt="Bunga 1">
+        </div>
+        
+        <div id="lightbox-2" class="lightbox">
+            <a href="#" class="close">&times;</a>
+            <img src="/api/placeholder/400/320" alt="Bunga 2">
+        </div>
+        
+        <div id="lightbox-3" class="lightbox">
+            <a href="#" class="close">&times;</a>
+            <img src="/api/placeholder/400/320" alt="Bunga 3">
+        </div>
+        
+        <div id="lightbox-4" class="lightbox">
+            <a href="#" class="close">&times;</a>
+            <img src="/api/placeholder/400/320" alt="Bunga 4">
+        </div>
+        
+        <div id="lightbox-5" class="lightbox">
+            <a href="#" class="close">&times;</a>
+            <img src="/api/placeholder/400/320" alt="Bunga 5">
+        </div>
+        
+        <div id="lightbox-6" class="lightbox">
+            <a href="#" class="close">&times;</a>
+            <img src="/api/placeholder/400/320" alt="Bunga 6">
+        </div>
+    </div>
+</body>
+</html>

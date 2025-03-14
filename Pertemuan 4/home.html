@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Profil Arifiana</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.2) 0%, rgba(52, 152, 219, 0) 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            z-index: -1;
+            animation: float 15s infinite alternate;
+        }
+        
+        body::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.15) 0%, rgba(46, 204, 113, 0) 70%);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            z-index: -1;
+            animation: float 20s infinite alternate-reverse;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 20px); }
+            100% { transform: translate(10px, 40px); }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 40px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .profile {
+            text-align: center;
+            position: relative;
+        }
+        
+        .img-wrapper {
+            width: 210px;
+            height: 210px;
+            margin: 0 auto 25px;
+            position: relative;
+            border-radius: 50%;
+            padding: 5px;
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+        }
+        
+        .img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3498db, #2ecc71, #3498db);
+            z-index: -1;
+            animation: spin 3s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile img:hover {
+            transform: scale(1.05);
+        }
+
+        .profile h1 {
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .profile h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #3498db, transparent);
+        }
+
+        .info {
+            max-width: 650px;
+            margin: 30px auto;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .info:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 20px;
+            height: 20px;
+            border-top: 3px solid #3498db;
+            border-left: 3px solid #3498db;
+            opacity: 0.5;
+        }
+        
+        .info::after {
+            content: '';
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 3px solid #3498db;
+            border-right: 3px solid #3498db;
+            opacity: 0.5;
+        }
+
+        .info h2 {
+            color: #3498db;
+            margin: 20px 0 15px;
+            font-size: 1.8em;
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .info h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #3498db, transparent);
+        }
+
+        .info p {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(52,152,219,0.3);
+        }
+        
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 12px rgba(52,152,219,0.5);
+        }
+        
+        .skill-tag:hover::before {
+            transform: translateX(100%);
+        }
+
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-button {
+            padding: 12px 24px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(52,152,219,0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .social-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: width 0.4s ease;
+            z-index: 0;
+        }
+        
+        .social-button span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .social-button i {
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .social-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(52,152,219,0.4);
+        }
+        
+        .social-button:hover::before {
+            width: 100%;
+        }
+        
+        .social-button:hover i {
+            transform: scale(1.2);
+        }
+    
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="profile">
+            <div class="img-wrapper">
+                <img src="img/fina.jpg" alt="Profile Picture">
+            </div>
+            <h1>Arifiana</h1>
+            <div class="info fade-in">
+                <h2>Tentang Saya</h2>
+                <p>Mahasiswa Sistem Informasi yang memiliki ketertarikan besar dalam desain antarmuka pengguna (UI) dan pengalaman pengguna (UX). Dengan pengalaman dari program studi independen dan berbagai proyek akademik, saya telah mempelajari bagaimana menerapkan prinsip human centered design dan design thinking untuk menciptakan solusi yang fungsional dan estetis. Menguasai UI Design Tools seperti Figma, Canva, dan Microsoft Office. Berpengalaman dalam UX Research (user persona, wireframing, prototyping, usability testing), serta menerapkan framework seperti Design Thinking. Selain itu, saya juga tertarik untuk mengembangkan keterampilan di bidang Fullstack Web Developer. Memiliki soft skills meliputi kolaborasi tim, manajemen waktu, dan problem solving.</p>
+                
+                <h2>Keahlian</h2>
+                <div class="skills fade-in">
+                    <div class="skill-tag">Web Development</div>
+                    <div class="skill-tag">Database Management</div>
+                    <div class="skill-tag">UI/UX Design</div>
+                    <div class="skill-tag">HTML/CSS</div>
+                    <div class="skill-tag">JavaScript</div>
+                    <div class="skill-tag">MySQL</div>
+                </div>
+
+                <h2>Media Sosial</h2>
+                <div class="social-links fade-in">
+                    <a href="http://www.linkedin.com/in/arifiana-fii-b16245252" class="social-button" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/arifiana" class="social-button" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.instagram.com/arifiana.fii" class="social-button" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const fadeElements = document.querySelectorAll(".fade-in");
+
+            function checkScroll() {
+                fadeElements.forEach(element => {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top < window.innerHeight - 100) {
+                        element.classList.add("active");
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", checkScroll);
+            checkScroll();
+        });
+    </script>
+</body>
+</html>

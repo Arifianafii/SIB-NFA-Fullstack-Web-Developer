@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Footer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #002e5b;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .footer-container p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-container p:hover {
+            color: #ffffff;
+        }
+
+        .footer-container span {
+            font-weight: bold;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="footer-container">
+        <p>&copy; <span id="year"></span> <span>Arifiana | Sistem Informasi | STT Terpadu Nurul fikri</span>
+    </div>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

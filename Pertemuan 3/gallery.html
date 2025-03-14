@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        /* Marquee Slider */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            background: #fff;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 20px;
+            animation: marquee 10s linear infinite;
+        }
+
+        .marquee-content img {
+            height: 120px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px 0;
+        }
+
+        .gallery a {
+            display: block;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery a:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Gallery</h1>
+
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <img src="bunga1.jpg" alt="Image 1">
+            <img src="bunga2.jpg" alt="Image 2">
+            <img src="bunga3.jpg" alt="Image 3">
+            <img src="bunga4.jpg" alt="Image 4">
+            <img src="bunga5.jpg" alt="Image 5">
+            <img src="bunga6.jpg" alt="Image 6">
+        </div>
+    </div>
+
+    <div class="gallery">
+        <a href="bunga1.jpg" target="_blank"><img src="bunga1.jpg" alt="Gallery Image 1"></a>
+        <a href="bunga2.jpg" target="_blank"><img src="bunga2.jpg" alt="Gallery Image 2"></a>
+        <a href="bunga3.jpg" target="_blank"><img src="bunga3.jpg" alt="Gallery Image 3"></a>
+        <a href="bunga4.jpg" target="_blank"><img src="bunga4.jpg" alt="Gallery Image 4"></a>
+        <a href="bunga5.jpg" target="_blank"><img src="bunga5.jpg" alt="Gallery Image 5"></a>
+        <a href="bunga6.jpg" target="_blank"><img src="bunga6.jpg" alt="Gallery Image 6"></a>
+    </div>
+</body>
+</html>

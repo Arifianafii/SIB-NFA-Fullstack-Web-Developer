@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Right Content</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            padding: 15px;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf2 100%);
+            height: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        
+        fieldset {
+            border: none;
+            border-radius: 20px;
+            padding: 25px 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            margin-top: 40px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        fieldset:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        legend {
+            color: white;
+            font-weight: 500;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #3498db, #2980b9, #1abc9c);
+            border-radius: 30px;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        
+        li {
+            margin: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            transform: translateX(10px);
+        }
+        
+        a {
+            text-decoration: none;
+            color: #3498db;
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            background: #f8f9fa;
+            border-left: 3px solid transparent;
+            font-weight: 400;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        a:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(52, 152, 219, 0.1), rgba(255, 255, 255, 0));
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+        
+        a:hover {
+            color: #2c3e50;
+            background: #e9f7fe;
+            border-left: 3px solid #3498db;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.15);
+        }
+        
+        a:hover:before {
+            width: 100%;
+        }
+        
+        a::before {
+            content: attr(data-icon);
+            margin-right: 12px;
+            font-size: 1.3em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        a:hover::before {
+            background: rgba(52, 152, 219, 0.2);
+            transform: scale(1.2) rotate(10deg);
+        }
+        
+        a.html {
+            border-left-color: #e34c26;
+        }
+        
+        a.css {
+            border-left-color: #264de4;
+        }
+        
+        a.js {
+            border-left-color: #f0db4f;
+        }
+        
+        a.php {
+            border-left-color: #777bb3;
+        }
+        
+        a.mysql {
+            border-left-color: #00758f;
+        }
+        
+        a:hover.html::before, a:hover.css::before, a:hover.js::before, a:hover.php::before, a:hover.mysql::before {
+            color: white;
+        }
+        
+        a:hover.html::before {
+            background: rgba(227, 76, 38, 0.8);
+        }
+        
+        a:hover.css::before {
+            background: rgba(38, 77, 228, 0.8);
+        }
+        
+        a:hover.js::before {
+            background: rgba(240, 219, 79, 0.8);
+        }
+        
+        a:hover.php::before {
+            background: rgba(119, 123, 179, 0.8);
+        }
+        
+        a:hover.mysql::before {
+            background: rgba(0, 117, 143, 0.8);
+        }
+      
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+        
+        body::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #2980b9, #1abc9c);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Materi Fullstack</legend>
+        <ul>
+            <li><a href="https://www.w3schools.com/html/" target="_blank" class="html" data-icon="📄">HTML5</a></li>
+            <li><a href="https://www.w3schools.com/css/" target="_blank" class="css" data-icon="🎨">CSS3</a></li>
+            <li><a href="https://www.w3schools.com/js/" target="_blank" class="js" data-icon="⚙️">JavaScript</a></li>
+            <li><a href="https://www.w3schools.com/php/" target="_blank" class="php" data-icon="🔄">PHP</a></li>
+            <li><a href="https://www.w3schools.com/mysql/" target="_blank" class="mysql" data-icon="🗂️">MySQL</a></li>
+        </ul>
+    </fieldset>
+</body>
+</html>

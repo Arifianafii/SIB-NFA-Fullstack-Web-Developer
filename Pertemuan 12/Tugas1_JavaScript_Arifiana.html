@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menghitung Luas Bangun Datar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        button {
+            margin-top: 10px;
+        }
+        p.hasil {
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Menghitung Luas Bangun Datar</h1>
+
+    <section>
+        <h2>Persegi Panjang</h2>
+        <label for="panjang">Panjang:</label>
+        <input id="panjang" type="number" min="0" placeholder="Masukkan panjang">
+        <label for="lebar">Lebar:</label>
+        <input id="lebar" type="number" min="0" placeholder="Masukkan lebar">
+        <button onclick="hitungLuasPersegiPanjang()">Hitung</button>
+        <p id="luasPersegiPanjang" class="hasil"></p>
+    </section>
+
+    <section>
+        <h2>Bujur Sangkar</h2>
+        <label for="sisi">Sisi:</label>
+        <input id="sisi" type="number" min="0" placeholder="Masukkan sisi">
+        <button onclick="hitungLuasBujurSangkar()">Hitung</button>
+        <p id="luasBujurSangkar" class="hasil"></p>
+    </section>
+
+    <section>
+        <h2>Segitiga</h2>
+        <label for="alas">Alas:</label>
+        <input id="alas" type="number" min="0" placeholder="Masukkan alas">
+        <label for="tinggi">Tinggi:</label>
+        <input id="tinggi" type="number" min="0" placeholder="Masukkan tinggi">
+        <button onclick="hitungLuasSegitiga()">Hitung</button>
+        <p id="luasSegitiga" class="hasil"></p>
+    </section>
+
+    <script>
+        function hitungLuasPersegiPanjang() {
+            const panjang = parseFloat(document.getElementById("panjang").value);
+            const lebar = parseFloat(document.getElementById("lebar").value);
+            if (isNaN(panjang) || isNaN(lebar)) {
+                alert("Harap masukkan nilai yang valid untuk panjang dan lebar.");
+                return;
+            }
+            const hasil = panjang * lebar;
+            document.getElementById("luasPersegiPanjang").innerText = `Luas Persegi Panjang: ${hasil.toFixed(2)} cm²`;
+        }
+
+        function hitungLuasBujurSangkar() {
+            const sisi = parseFloat(document.getElementById("sisi").value);
+            if (isNaN(sisi)) {
+                alert("Harap masukkan nilai yang valid untuk sisi.");
+                return;
+            }
+            const hasil = sisi * sisi;
+            document.getElementById("luasBujurSangkar").innerText = `Luas Bujur Sangkar: ${hasil.toFixed(2)} cm²`;
+        }
+
+        function hitungLuasSegitiga() {
+            const alas = parseFloat(document.getElementById("alas").value);
+            const tinggi = parseFloat(document.getElementById("tinggi").value);
+            if (isNaN(alas) || isNaN(tinggi)) {
+                alert("Harap masukkan nilai yang valid untuk alas dan tinggi.");
+                return;
+            }
+            const hasil = 0.5 * alas * tinggi;
+            document.getElementById("luasSegitiga").innerText = `Luas Segitiga: ${hasil.toFixed(2)} cm²`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Left Content</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            padding: 15px;
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf2 100%);
+            height: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        
+        fieldset {
+            border: none;
+            border-radius: 20px;
+            padding: 25px 20px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            margin-top: 40px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        fieldset:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+        
+        legend {
+            color: white;
+            font-weight: 500;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #3498db, #2980b9, #1abc9c);
+            border-radius: 30px;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        
+        li {
+            margin: 15px 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        li:hover {
+            transform: translateX(10px);
+        }
+        
+        a {
+            text-decoration: none;
+            color: #3498db;
+            display: block;
+            padding: 12px 15px;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            background: #f8f9fa;
+            border-left: 3px solid transparent;
+            font-weight: 400;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        a:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(52, 152, 219, 0.1), rgba(255, 255, 255, 0));
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+        
+        a:hover {
+            color: #2c3e50;
+            background: #e9f7fe;
+            border-left: 3px solid #3498db;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.15);
+        }
+        
+        a:hover:before {
+            width: 100%;
+        }
+        
+        a span.emoji {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        
+        a:hover span.emoji {
+            transform: scale(1.3) rotate(10deg);
+        }
+        
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        body::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        body::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #3498db, #2980b9);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+        
+        body::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #2980b9, #1abc9c);
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: content-box;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Social Media Teman</legend>
+        <ul>
+            <li><a href="https://imginn.com/dimasaji_ngrho/" target="mainContent"><span class="emoji">😎</span> Dimas - Instagram</a></li>
+            <li><a href="https://imginn.com/_salsabira/" target="mainContent"><span class="emoji">✨</span> Caca - Instagram</a></li>
+            <li><a href="https://imginn.com/its_me_linda28/" target="mainContent"><span class="emoji">🌸</span> Linda - Instagram</a></li>
+            <li><a href="https://imginn.com/atiiqahnabiilahqushayyi/" target="mainContent"><span class="emoji">⭐</span> Atiiqah - Instagram</a></li>
+            <li><a href="https://imginn.com/traamalik_/" target="mainContent"><span class="emoji">🚀</span> Putra - Instagram</a></li>
+        </ul>
+    </fieldset>
+</body>
+</html>
