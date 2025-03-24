@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Manajemen Produk</title>
+</head>
+<body>
+    <h1>Manajemen Produk (Lihat Hasilnya di Console)</h1>
+    
+    <script>
+        let produkList = [
+            { id: 1, nama: "Smartphone", harga: 3500000 },
+            { id: 2, nama: "Laptop", harga: 9000000 },
+            { id: 3, nama: "Earphone", harga: 350000 },
+            { id: 4, nama: "Powerbank", harga: 250000 },
+            { id: 5, nama: "Smartwatch", harga: 1800000 }
+        ];
+
+        function tampilkanProduk() {
+            console.log("Daftar Produk:");
+            produkList.forEach(produk => {
+                const { id, nama, harga } = produk;
+                console.log(`ID: ${id}, Nama: ${nama}, Harga: Rp${harga.toLocaleString()}`);
+            });
+        }
+
+        function tambahProduk(id, nama, harga) {
+            const newProduk = { id, nama, harga };
+            produkList = [...produkList, newProduk];
+            console.log(`Produk ${nama} berhasil ditambahkan`);
+            tampilkanProduk();
+        }
+
+        function hapusProduk(id) {
+            const index = produkList.findIndex(produk => produk.id === id);
+            if (index !== -1) {
+                const nama = produkList[index].nama;
+                produkList = [...produkList.slice(0, index), ...produkList.slice(index + 1)];
+                console.log(`Produk dengan ID ${id} berhasil dihapus`);
+            } else {
+                console.log(`Produk dengan ID ${id} tidak ditemukan`);
+            }
+        }
+
+        const eventHandler = () => {
+            tambahProduk(6, "Tablet", 7000000);
+            tambahProduk(7, "Mouse", 200000);
+            hapusProduk(2);
+            tampilkanProduk();
+        };
+
+        console.log("--- Daftar Produk Awal ---");
+        tampilkanProduk();
+
+        console.log("\n--- Setelah Menjalankan Event Handler ---");
+        eventHandler();
+    </script>
+</body>
+</html>
